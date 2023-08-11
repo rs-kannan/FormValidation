@@ -1,0 +1,147 @@
+import React, { useState } from "react";
+
+const BooksCollection = ({ data, setData }) => {
+  const [editMode, setEditMode] = useState(false);
+  const [editedBook, setEditedBook] = useState({});
+
+  const handleDelete = (id) => {
+    const updatedData = data.filter((user) => user.id !== id);
+    setData(updatedData);
+  };
+
+  const handleEdit = (book) => {
+    setEditMode(true);
+    setEditedBook(book);
+  };
+
+  const handleSave = () => {
+    // Perform validation and update the book details
+    // Here you can save the changes to the backend or update the state
+    // For simplicity, let's assume we are updating the state directly
+    const updatedData = data.map((book) => {
+      if (book.id === editedBook.id) {
+        return editedBook;
+      }
+      return book;
+    });
+
+    setData(updatedData);
+    setEditMode(false);
+    setEditedBook({});
+  };
+
+  const handleCancel = () => {
+    setEditMode(false);
+    setEditedBook({});
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditedBook((prevBook) => ({
+      ...prevBook,
+      [name]: value,
+    }));
+  };
+
+  return (
+    <div>
+      <table className="table mt-3">
+        <thead className="bg-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author Name</th>
+            <th scope="col">ISBN Number</th>
+            <th scope="col">Publication Date</th>
+            <th className="col-mt3">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((book, index) => {
+            if (editMode && editedBook.id === book.id) {
+              // Render input fields for editing the book details
+              return (
+                <tr key={book.id}>
+                  <th scope="row">{index + 1}</th>
+                  <td>
+                    <input
+                      type="text"
+                      name="title"
+                      value={editedBook.title || ""}
+                      onChange={handleInputChange}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="author"
+                      value={editedBook.author || ""}
+                      onChange={handleInputChange}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="isbn"
+                      value={editedBook.isbn || ""}
+                      onChange={handleInputChange}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="date"
+                      value={editedBook.date || ""}
+                      onChange={handleInputChange}
+                    />
+                  </td>
+                  <td>
+                    <button
+                      className="btn btn-success ms-2"
+                      onClick={handleSave}
+                    >
+                      Save
+                    </button>
+                    <button
+                      className="btn btn-secondary ms-2"
+                      onClick={handleCancel}
+                    >
+                      Cancel
+                    </button>
+                  </td>
+                </tr>
+              );
+            } else {
+              // Render book details
+              return (
+                <tr key={book.id}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{book.title}</td>
+                  <td>{book.author}</td>
+                  <td>{book.isbn}</td>
+                  <td>{book.date}</td>
+                  <td>
+                    <button
+                      className="btn btn-primary ms-2"
+                      onClick={() => handleEdit(book)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="btn btn-danger ms-2"
+                      onClick={() => handleDelete(book.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            }
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default BooksCollection;

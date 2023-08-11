@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap");
+body {
+  background-color: rgb(48, 48, 48);
+  font-family:  sans-serif;
+  background-image: url(https://www.marshallsindia.com/ImageBuckets/ItemImages/ZA%201903.jpg?id=75);
+  font-weight: bolder;
+  color: rgb(20, 16, 24);
+  
+  overflow: hidden;
+  object-fit: cover;
+}
+.card {
+  width: 30rem;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+  overflow: hidden;
+  padding: 16px;
+  border-radius: 12px;
+  border-color: rgba(11, 28, 38, 0.771);
+}
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+.text {
+  padding: 2px 3px;
+}
+input {
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  padding: 8px;
+}
+.btn {
+  border-radius: 3px;
+  margin-left: 150px;
+}
+.card-header {
+  background-color: rgba(11, 28, 38, 0.771);
+  color: white;
+}
+.navbar {
+  background-color: rgb(33, 37, 41);
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #000000;
+}
+.nav-item {
+  padding: 10px;
+  margin-top: 10px;
+}
+.nav-link {
+  text-decoration: underline;
+}
+.nav-items {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+img {
+  border-radius: 10px;
+  filter: drop-shadow(0 0 0.55rem rgb(174, 140, 146));
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.text {
+  text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2),
+    0px -5px 35px rgba(255, 255, 255, 0.3);
+}
+.manage-systems {
+  text-align: left;
+  padding-left: 20px;
+}
+.brand {
+  color: white;
+  display: flex;
+  align-items: center; /* Align brand vertically */
+  gap: 2px;
+  margin-right: auto;
+}
+.conatiner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 89vh;
+}
+.navbar ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.brand {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2px;
+}
+@media screen and (max-width: 500px) {
+  body {
+    text-align: center;
+  }
+}
